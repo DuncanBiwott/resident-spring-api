@@ -28,7 +28,7 @@ public class UserController {
         }
     }
 
-@RequestMapping(value = "/users",method = RequestMethod.POST)
+    @RequestMapping(value = "/users",method = RequestMethod.POST)
     public ResponseEntity<?> createUsers(@RequestBody  User user ){
         try {
             log.info("User creation request created ");
