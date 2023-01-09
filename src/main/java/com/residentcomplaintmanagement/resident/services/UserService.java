@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -27,24 +28,28 @@ public class UserService {
     }
 
     public User updateUser(User user){
-        try{
-            log.info("Received an update for {}",user.getName());
-            userRepository.save(user);
-            return user;
 
-        }catch (Exception e){
-            log.error("Error occurred",e);
-            return null;
-        }
+            log.info("Received an update for {}",user.getName());
+
+
+
+
+             userRepository.save(user);
+
+
+        return user;
     }
     public List<User> getUsers(){
        return userRepository.findAll();
 
     }
-    public String deleteUser(User user){
-        userRepository.delete(user);
-        return  "Success";
+    public String deleteUser(long id){
+
+            userRepository.deleteById(id);
+            return  "Deleted Successfully";
+
+        }
     }
 
 
-}
+

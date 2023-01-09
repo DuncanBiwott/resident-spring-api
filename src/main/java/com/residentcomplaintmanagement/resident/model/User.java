@@ -1,16 +1,18 @@
 package com.residentcomplaintmanagement.resident.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
 import java.security.Timestamp;
 
-@Getter
-@Setter
+@Data
+@Builder(toBuilder = true)
 @Entity
 @Table(name="users")
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +23,7 @@ public class User {
     private String password;
     @Column(name = "active",nullable = false)
     private int active;
-    @Column(name = "create_at",nullable = true)
-    private Timestamp createdAt;
-    @Column(name = "updated_at",nullable = true)
-    private Timestamp updatedAt;
+
+
 
 }
